@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Conditional Odd Series</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef3f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    .box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #FF9800;
+      color: white;
+      font-weight: bold;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #F57C00;
+    }
+
+    .result {
+      text-align: center;
+      font-weight: bold;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Odd Series (Only Odd Count)</h2>
+    <input type="number" id="oddOnlyInput" placeholder="Enter a number" />
+    <button onclick="generateConditionalOddSeries()">Generate</button>
+    <div class="result" id="oddOnlyResult"></div>
+  </div>
+
+  <script>
+    function generateConditionalOddSeries() {
+      const a = parseInt(document.getElementById("oddOnlyInput").value);
+      const result = [];
+
+      const limit = a % 2 === 0 ? a - 1 : a;
+
+      for (let i = 0; i < limit; i++) {
+        result.push(2 * i + 1);
+      }
+
+      document.getElementById("oddOnlyResult").innerText = result.join(", ");
+    }
+  </script>
+
+</body>
+</html>

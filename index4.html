@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiples Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef3f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+
+    .box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #9C27B0;
+      color: white;
+      font-weight: bold;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #7B1FA2;
+    }
+
+    .result {
+      font-family: monospace;
+      white-space: pre;
+      font-size: 14px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Multiples Count (1–9)</h2>
+    <input type="text" id="multiInput" placeholder="Enter comma-separated numbers">
+    <button onclick="countMultiples()">Count</button>
+    <div class="result" id="multiResult"></div>
+  </div>
+
+  <script>
+    function countMultiples() {
+      const input = document.getElementById("multiInput").value;
+      const numbers = input.split(",").map(n => parseInt(n.trim())).filter(n => !isNaN(n));
+      const counts = {};
+
+      for (let i = 1; i <= 9; i++) {
+        counts[i] = 0;
+        for (const num of numbers) {
+          if (num % i === 0) {
+            counts[i]++;
+          }
+        }
+      }
+
+      document.getElementById("multiResult").innerText = JSON.stringify(counts, null, 2);
+    }
+  </script>
+
+</body>
+</html>
